@@ -1,0 +1,79 @@
+<div class="container">
+  <h1>Formulario Usando FormGroup</h1>
+</div>
+<form [formGroup]="angForm">
+  <label>Nombre</label>
+  <br />
+  <input type="text" name="firstname" placeholder="Nombre" formControlName='firstname' #firstname>
+  <div style="color: #f00;" *ngIf="angForm.get('firstname').hasError('required') && angForm.get('firstname').touched">El
+    campo nombre es obligatorio</div>
+  <br />
+  <label>Apellido Paterno</label>
+  <br />
+  <input type="text" class="form-control" name="lastname" placeholder="Primer Apellido" formControlName='lastname'
+    #lastname>
+  <div style="color: #f00;" *ngIf="angForm.get('lastname').hasError('required') && angForm.get('lastname').touched">El
+    campo primer apellido es obligatorio</div>
+  <br />
+  <label>Apellido Materno</label>
+  <br />
+  <input type="text" class="form-control" name="lastname2" placeholder="Segundo Apellido" formControlName='lastname2'
+    #lastname2>
+  <div style="color: #f00;" *ngIf="angForm.get('lastname2').hasError('required') && angForm.get('lastname2').touched">El
+    campo Segundo apellido es obligatorio</div>
+  <br />
+  <label>SSN</label>
+  <br />
+  <input type="number" class="form-control" name="ssn" placeholder="4 últimos dígitos del SSN" formControlName="ssn"
+    #ssn>
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('ssn').invalid && (angForm.get('ssn').dirty || angForm.get('ssn').touched) ">Por favor ingrese
+    los 4 últimos dígitos de un SSN válido</div>
+  <br />
+  <label>Codigo Postal</label>
+  <br />
+  <input type="number" class="form-control" name="codigopostal" placeholder="Codigo Postal"
+    formControlName='codigopostal' #codigopostal>
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('codigopostal').invalid && (angForm.get('codigopostal').dirty || angForm.get('codigopostal').touched) ">
+    El campo Codigo postal es obligatorio</div>
+  <br />
+  <label>Fecha de Nacimiento</label>
+  <br />
+  <input type="date" class="form-control" name="fecha_nacimiento" placeholder="Fecha de nacimiento "
+    formControlName='fecha_nacimiento' #fecha_nacimiento>
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('fecha_nacimiento').invalid && (angForm.get('fecha_nacimiento').dirty || angForm.get('fecha_nacimiento').touched) ">
+    El campo Correo Electronico es obligatorio</div>
+  <br />
+  <label>Correo Electronico</label>
+  <br />
+  <input type="email" class="form-control" name="email" placeholder="Correo Electronico" formControlName='email' #email>
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('email').invalid && (angForm.get('email').dirty || angForm.get('email').touched) ">El campo
+    Correo Electronico es obligatorio</div>
+  <br />
+  <label>Contraseña</label>
+  <br />
+  <input type="password" class="form-control" name="pwd" placeholder="password" formControlName='password' #password>
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('password').invalid && (angForm.get('password').dirty || angForm.get('password').touched) ">Por
+    favor ingrese una contraseña válida</div>
+  <div class="col">
+    <p><strong>La contraseña debe contener:</strong></p>
+    <p>8 a 20 carácteres, Números </p>
+  </div>
+  <br />
+  <label>Confirmar Contraseña</label>
+  <br />
+  <input type="password" class="form-control" name="confirmarpassword" placeholder="Confirmar Contraseña"
+    formControlName='confirmarpassword' #confirmarpassword />
+  <div style="color: #f00;"
+    *ngIf=" angForm.get('confirmarpassword').invalid && (angForm.get('confirmarpassword').dirty || angForm.get('confirmarpassword').touched) ">
+    Las contraseñas no coinciden</div>
+  <div class="col">
+    <p>Letras minúsculas, letras mayúsculas, caracteres especiales</p>
+  </div>
+  <input [disabled]="angForm.invalid" type="submit" value="Validar" class="btn btn-success btn-block"
+    (click)="onClickSubmit(firstname.value, lastname.value, lastname2.value,ssn.value,codigopostal.value,fecha_nacimiento.value,email.value, password.value,confirmarpassword.value)">
+</form>
